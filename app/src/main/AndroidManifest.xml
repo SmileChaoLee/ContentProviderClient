@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.smile.contentproviderclient">
 
-    <uses-permission android:name="com.smile.contentprovidertest.EmployeeContentProvider.PERMISSION"/>
+    <uses-permission android:name="com.smile.contentprovidertest.EmployeeContentProvider"/>
     
     <application
         android:allowBackup="true"
