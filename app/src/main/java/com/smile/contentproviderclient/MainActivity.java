@@ -35,8 +35,13 @@ public class MainActivity extends AppCompatActivity {
                 String[] selectionArgs = null;
                 String[] projection = {"emId", "emName", "emPhone"};
                 Cursor c = getContentResolver().query(contentURI, projection, selection, selectionArgs, "name");
-                if (c.moveToFirst()) {
-                    do{
+                if (c == null) {
+                    Toast.makeText(getApplicationContext(),
+                            "No data or wrong Content Provider",
+                            Toast.LENGTH_SHORT).show();
+                } else {
+                    if (c.moveToFirst()) {
+                        do {
                         /*
                         Toast.makeText(this,
                                 c.getString(c.getColumnIndex(EmployeeContentProvider.employeeId)) +
@@ -46,16 +51,17 @@ public class MainActivity extends AppCompatActivity {
                                 */
 
 
-                        Toast.makeText(getApplicationContext(),
-                                c.getString(0) +
-                                        ", " +  c.getString(1) +
-                                        ", " + c.getString(2),
-                                Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(),
+                                    c.getString(0) +
+                                            ", " + c.getString(1) +
+                                            ", " + c.getString(2),
+                                    Toast.LENGTH_SHORT).show();
 
-                    } while (c.moveToNext());
+                        } while (c.moveToNext());
+                    }
+
+                    c.close();
                 }
-
-                c.close();
             }
         });
     }
