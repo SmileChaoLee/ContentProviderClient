@@ -2,7 +2,7 @@ package com.smile.contentproviderclient;
 
 import android.database.Cursor;
 import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,8 +10,8 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String authority = new String("com.smile.contentprovidertest.provider01");
-    private static final String providerURI = new String("content://"+authority+"/employees");
+    private static final String authorities = new String("com.smile.contentprovidertest.provider01");
+    private static final String providerURI = new String("content://"+authorities+"/employees");
     private static final Uri contentURI = Uri.parse(providerURI);
 
     @Override
