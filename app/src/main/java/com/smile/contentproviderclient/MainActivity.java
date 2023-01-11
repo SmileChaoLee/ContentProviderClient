@@ -1,7 +1,6 @@
 package com.smile.contentproviderclient;
 
 import android.database.Cursor;
-import android.net.Uri;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,10 +8,6 @@ import android.widget.Button;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-
-    private static final String authorities = new String("com.smile.contentprovidertest.provider01");
-    private static final String providerURI = new String("content://"+authorities+"/employees");
-    private static final Uri contentURI = Uri.parse(providerURI);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
                 String selection = null;
                 String[] selectionArgs = null;
                 String[] projection = {"emId", "emName", "emPhone"};
-                Cursor c = getContentResolver().query(contentURI, projection, selection, selectionArgs, "name");
+                Cursor c = getContentResolver().query(Constant.contentURI, projection, selection, selectionArgs, "name");
                 if (c == null) {
                     Toast.makeText(getApplicationContext(),
                             "No data or wrong Content Provider",
@@ -49,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
                                         ", " + c.getString(c.getColumnIndex( EmployeeContentProvider.employeePhone)),
                                 Toast.LENGTH_SHORT).show();
                                 */
-
 
                             Toast.makeText(getApplicationContext(),
                                     c.getString(0) +
